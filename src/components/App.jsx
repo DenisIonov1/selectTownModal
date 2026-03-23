@@ -9,19 +9,19 @@ export default function App() {
   const [selectedCity, setSelectedCity] = useState(null);
   const [geoData, setGeoData] = useState(null);
 
-      useEffect(() => {
-        async function getData() {
-            try {
-                const response = await fetch('/geo.json');
-                const result = await response.json();
-                setGeoData(result)
-               
-            } catch (err) {
-                console.log(`Ошибка загрузки данных ${err}`)
-            }
-        }
-        getData();
-    }, [])
+  useEffect(() => {
+    async function getData() {
+      try {
+        const response = await fetch('/geo.json');
+        const result = await response.json();
+        setGeoData(result)
+
+      } catch (err) {
+        console.log(`Ошибка загрузки данных ${err}`)
+      }
+    }
+    getData();
+  }, [])
 
   useEffect(() => {
     const cityId = Cookies.get('cityId')
@@ -39,12 +39,12 @@ export default function App() {
 
   function handleCity(city) {
     setSelectedCity({ id: city.id, name: city.name });
-    Cookies.set('cityId', city.id, { expires: 180})
+    Cookies.set('cityId', city.id, { expires: 180 })
     setModalShown(false);
   }
 
   function handleData(data) {
-      setGeoData(data)
+    setGeoData(data)
   }
 
   return (
@@ -54,9 +54,8 @@ export default function App() {
         <p className={styles.city}>{selectedCity?.name || 'Город не выбран'}</p>
       </div>
 
-
-      {modalShown && <SelectTown onHandleCity={handleCity} geoData ={geoData}
-      selectedCityId={selectedCity?.id}
+      {modalShown && <SelectTown onHandleCity={handleCity} geoData={geoData}
+        selectedCityId={selectedCity?.id}
       />}
     </>
   )

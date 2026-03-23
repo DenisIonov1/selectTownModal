@@ -175,10 +175,10 @@ export default function SelectTown({ onHandleCity, geoData, selectedCityId }) {
                                             {elem.name}
                                         </button>
                                     </li>
-                                    })
+                                })
                                 }
                             </ul>
-                           
+
                             <ul className={styles.region}>
                                 {regionsToRender.map(elem => {
                                     return <li key={elem.id}>
@@ -209,7 +209,7 @@ export default function SelectTown({ onHandleCity, geoData, selectedCityId }) {
                                         </li>
                                     })}
                             </ul>
-                            
+
                         </> : <>
                             <ul className={styles.federalDistrict}>
                                 {districts.map(elem => {
@@ -225,7 +225,7 @@ export default function SelectTown({ onHandleCity, geoData, selectedCityId }) {
                                 })
                                 }
                             </ul>
-                            
+
                             <ul className={styles.region}>
                                 {regions.map(elem => {
                                     return <li key={elem.id}>
@@ -240,9 +240,9 @@ export default function SelectTown({ onHandleCity, geoData, selectedCityId }) {
                                 })}
                             </ul>
 
-                            
+
                             <div className={styles.cities}>
-                                {cities.length > 3 && 
+                                {cities.length > 3 &&
                                     <ul className={styles.topCities}>
                                         {topCities.map((elem) => {
                                             return <li key={elem.id}>
@@ -257,25 +257,26 @@ export default function SelectTown({ onHandleCity, geoData, selectedCityId }) {
                                             </li>
                                         })}
                                     </ul>}
-                                    <ul className={styles.citiesList}>
-                                        {[...cities]
-                                            .sort((a, b) => a.name.localeCompare(b.name))
-                                            .map((elem, index, array) => {
-                                                const previousLetter = index > 0 ? array[index - 1].name[0] : null;
-                                                const currentLetter = elem.name[0];
-                                                const showLetter = index === 0 || previousLetter !== currentLetter;
-                                                return <li key={elem.id}>
-                                                    <button
-                                                        className={`${styles.cityBtn} ${elem.count > 30000 ? styles.bold : ''} ${activeCityId === elem.id ? styles.active : ''}`}
-                                                        type='button'
-                                                        onClick={() => handleCity(elem)}
-                                                    >
-                                                        <span className={styles.cityLetter}>{showLetter ? elem.name[0] : '\u00A0'}</span>
-                                                        {elem.name}
-                                                    </button>
-                                                </li>
-                                            })}
-                                    </ul>
+                                    
+                                <ul className={styles.citiesList}>
+                                    {[...cities]
+                                        .sort((a, b) => a.name.localeCompare(b.name))
+                                        .map((elem, index, array) => {
+                                            const previousLetter = index > 0 ? array[index - 1].name[0] : null;
+                                            const currentLetter = elem.name[0];
+                                            const showLetter = index === 0 || previousLetter !== currentLetter;
+                                            return <li key={elem.id}>
+                                                <button
+                                                    className={`${styles.cityBtn} ${elem.count > 30000 ? styles.bold : ''} ${activeCityId === elem.id ? styles.active : ''}`}
+                                                    type='button'
+                                                    onClick={() => handleCity(elem)}
+                                                >
+                                                    <span className={styles.cityLetter}>{showLetter ? elem.name[0] : '\u00A0'}</span>
+                                                    {elem.name}
+                                                </button>
+                                            </li>
+                                        })}
+                                </ul>
                             </div>
                         </>
                     }
