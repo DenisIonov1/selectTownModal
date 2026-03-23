@@ -1,0 +1,177 @@
+@import './variables';
+
+@mixin column {
+    padding: 20px;
+    margin: 0;
+    list-style: none;
+    height: 568px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+    
+
+@mixin columnBtn {
+    width: 100%;
+    height: 48px;
+    padding: 12px;
+    text-align: left;
+    border-radius: 8px;
+    border: none;
+    background-color: transparent;
+    color: #0052C2;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #F4F9FC;
+    }
+
+    &.active {
+        background-color: #FFEFBA;
+        color: #4A4A4A;            
+        
+        
+    }
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    width:960px;
+    height: 644px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 2px 6px 0px rgba(0, 38, 90, 0.05), 
+                0px 5px 18px 0px rgba(0, 38, 90, 0.08),
+                0px 20px 80px 0px rgba(0, 38, 90, 0.1);
+    border-radius: 12px;
+}
+
+.modalNav {
+    height: 76px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navText {
+    font-size: $font-size-header;
+}
+
+.searchWrapper {
+    width: 368px;
+    
+    
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+    
+    svg {
+        position: absolute;
+        pointer-events: none;
+        left: 8px;
+    }
+}
+.searchInput {
+    width: 100%;
+    height: 36px;
+    border-radius: 4px;
+    border: 1px solid #C6C6C6;
+    border-radius: 4px;
+    padding-left: 36px;
+    cursor: pointer;
+}
+
+.searchInput::placeholder {
+    color: #999999;
+
+}
+
+.columns {
+    display: flex;
+    gap: 20px;
+}
+
+.federalDistrict {
+    @include column;
+    width: 240px;
+}
+
+.districtBtn {
+    @include columnBtn;
+}
+
+.region {
+    @include column;
+    padding: 20px 0;
+    width: 304px;
+    
+}
+
+.regionBtn {
+    @include columnBtn;
+}
+
+.cities {
+    padding: 20px;
+    width: 376px;
+}
+
+.topCities {
+    padding: 0 0 20px;
+    margin: 0;
+    list-style: none;
+}
+
+.topCitiesBtn {
+    @include columnBtn;
+    padding-left: 40px;
+}
+
+.citiesList {
+    padding: 20px 0;
+    margin: 0;
+    list-style: none;
+    border-top: #DDDDDD solid 1px;
+    height: 336px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.cityBtn {
+    @include columnBtn;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cityLetter {
+    color: #999999;
+    width: 16px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.citiesSearch {
+    @include column;
+}
